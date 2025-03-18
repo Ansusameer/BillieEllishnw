@@ -1,12 +1,14 @@
-FROM python:3.10.8-slim-buster
 
-RUN apt update && apt upgrade -y
-RUN apt install git -y
-COPY requirements.txt /requirements.txt
+FROM python:3.9-slim-buster
 
-RUN cd /
-RUN pip3 install -U pip && pip3 install -U -r requirements.txt
-RUN mkdir /ben-url-filter-bot
-WORKDIR /ben-url-filter-bot
-COPY start.sh /start.sh
-CMD ["/bin/bash", "/start.sh"]
+WORKDIR /app
+
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+
+EXPOSE 8080  
+
+CMD ["python", "bot.py"]
