@@ -16,7 +16,6 @@ PyLeaves==1.0.2
 cinemagoer
 shortzy
 aiofiles
-pyromod==1.5
 
 jinja2
 apscheduler
